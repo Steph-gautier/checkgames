@@ -1,0 +1,70 @@
+name: checkgames
+description: An application for playing cards with frient
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.0
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  image_path: "assets/images/logoIcon.png"
+  android: true
+  ios: true
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# The following section is specific to Flutter.
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+     - assets/images/clover.png
+     - assets/images/heart.png
+     - assets/images/pique.png
+     - assets/images/spade.png
+     - assets/images/logo.png
+     - assets/images/cards.png
+     - assets/images/JokerRed.png
+     - assets/images/JokerBlack.png
+     - assets/images/cardsImage.png
+     - assets/images/judges/judge-spade.png
+     - assets/images/judges/judge-clover.png
+     - assets/images/judges/judge-pique.png
+     - assets/images/kings/king-clover.png
+     - assets/images/kings/king-heart.png
+     - assets/images/kings/king-spade.png
+     - assets/images/kings/king-pique.png
+     - assets/images/queens/queen-clover.png
+     - assets/images/queens/queen-heart.png
+     - assets/images/queens/queen-pique.png
+     - assets/images/queens/queen-spade.png
+     - assets/images/gameboard.png
+
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
