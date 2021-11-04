@@ -68,7 +68,7 @@ class CardGame{
 }
 
   bool hasRankString() {
-    if(this.rank > 1 && this.rank < 10){
+    if(this.rank <= 10 && this.rank > 1){
       return false;
     }
     else{
@@ -76,7 +76,22 @@ class CardGame{
     }
   }
 
-  String getCardImagePath(){
+  String getSubCardImagePath(){
+    if(cardType == CardType.Clover){
+      return "assets/images/clover.png";
+    }
+    else if(cardType == CardType.Heart){
+      return "assets/images/heart.png";
+    }
+    else if(cardType == CardType.Square){
+      return "assets/images/pique.png";
+    }
+    else{
+      return "assets/images/spade.png";
+    }
+  }
+
+  String getMainCardImagePath(){
     if(cardType == CardType.Clover){
       if(rank == 14){
         return "assets/images/JokerBlack.png";

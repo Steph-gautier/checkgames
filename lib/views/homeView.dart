@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:checkgames/src/cardGame.dart';
 import 'package:checkgames/src/cardGameView.dart';
 import 'package:checkgames/views/cardView.dart';
@@ -152,36 +150,6 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                       return Container(
                           color: Colors.teal,
                           height: sheetHeight,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                height: sheetHeight * 0.85,
-                                child: new CardGameView(card),
-                              ),
-                              OutlinedButton(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.flip, color: Colors.white,),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text("Flip", style: TextStyle(color: Colors.white, fontSize: 16),)
-                                  ],
-                                ),
-                                style: OutlinedButton.styleFrom(
-                                    side: BorderSide(
-                                        color: Colors.white,
-                                        width: 1.2
-                                    )
-                                ),
-                                onPressed: (){
-                                  card.random();
-                                },
-                              )
-                            ],
-                          )
                       );
                     });
                   }

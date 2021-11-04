@@ -3,42 +3,69 @@ import 'cardGame.dart';
 
 class CardGameView extends StatefulWidget {
   CardGame card;
-  CardGameView(this.card);
+  final Function onTouchCard;
+  //final Function OnRefreshCard;
+
+  CardGameView(this.card, {this.onTouchCard});
 
   @override
   _CardGameViewState createState() => _CardGameViewState();
+
+
+  RefreshCard(){
+    this.card.random();
+    return CardGameView(card);
+  }
 }
 
 class _CardGameViewState extends State<CardGameView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Card(
-      elevation: 50,
-      color: Colors.white,
-      shadowColor: Colors.black26,
-      margin: EdgeInsets.fromLTRB(55, 30, 55, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
-            child: Column(
+    return GestureDetector(
+      onTap: (){
+        if(this.widget.onTouchCard != null){
+          this.setState(() {
+            this.widget.card.random();
+          });
+          this.widget.onTouchCard();
+        }
+      },
+      child: Card(
+        elevation: 50,
+        color: Colors.white,
+        shadowColor: Colors.black26,
+        margin: EdgeInsets.fromLTRB(10, 30, 10, 30),
+        child: Column(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.card.getCardRankString(), style: TextStyle(color: widget.card.getCardColor(), fontWeight: FontWeight.w800, fontSize: 18),),
-                widget.card.cardRank != CardRank.Joker ? Image.asset(widget.card.getCardImagePath(), fit: BoxFit.contain, width: 20, height: 20,) : Text("")
+                Padding(
+                  padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
+                  child: Column(
+                    children: [
+                      Text(widget.card.getCardRankString(), style: TextStyle(color: widget.card.getCardColor(), fontWeight: FontWeight.w800, fontSize: 18),),
+                      widget.card.cardRank != CardRank.Joker ? Image.asset(widget.card.getSubCardImagePath(), fit: BoxFit.contain, width: 20, height: 20,) : Text("")
+                    ],
+                  ),
+                ),
+                Center(
+                  child: Padding(
+                    child: Image.asset(widget.card.getMainCardImagePath(), fit: BoxFit.contain, height: 120, width: 120,),
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  ),
+                )
               ],
             ),
-          ),
-          Center(
-            child: Image.asset(widget.card.getCardImagePath(), fit: BoxFit.contain, height: 150),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 12, 0),
-            child: flipCardRank(widget.card)
-          )
-        ],
+            Row(
+              children: [
+                Container(color: Colors.transparent, width: 80, height: 2,),
+                flipCardRank(widget.card)
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -59,22 +86,13 @@ class _CardGameViewState extends State<CardGameView> {
           ..rotateY(0)
           ..rotateZ(3.14),
         alignment: FractionalOffset.center,
-        child:Row(
-          textDirection: TextDirection.rtl,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              width: 50,
-              height: 20,
-              color: Colors.blue,
-            ),
-            Column(
-              children: [
-                Text(card.getCardRankString(), style: TextStyle(color: card.getCardColor(), fontWeight: FontWeight.w800, fontSize: 18)),
-                card.cardRank != CardRank.Joker ? Image.asset(card.getCardImagePath(), fit: BoxFit.contain, width: 20, height: 20,) : Text("")
-              ],
-            )
-          ],
-        )  // <<< set your widget here
+            Text(card.getCardRankString(), style: TextStyle(color: card.getCardColor(), fontWeight: FontWeight.w800, fontSize: 18)),
+            card.cardRank != CardRank.Joker ? Image.asset(card.getSubCardImagePath(), fit: BoxFit.contain, width: 20, height: 20,) : Text("")
+            ],
+        )
     );
   }
 }

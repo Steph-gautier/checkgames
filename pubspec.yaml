@@ -40,6 +40,7 @@ flutter:
      - assets/images/JokerRed.png
      - assets/images/JokerBlack.png
      - assets/images/cardsImage.png
+     - assets/images/backCard.png
      - assets/images/judges/judge-spade.png
      - assets/images/judges/judge-clover.png
      - assets/images/judges/judge-pique.png
